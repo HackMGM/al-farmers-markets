@@ -1,5 +1,5 @@
 <template name="info">
-  <h2>Learn Meteor!</h2>
+  <h2>Alabama Farmers Markets</h2>
   <ul>
     <li>
       <form class="info-link-add">
@@ -10,6 +10,12 @@
     </li>
     {{#each links}}
       <li><a href="{{url}}" target="_blank">{{title}}</a></li>
+    {{/each}}
+
+
+     {{#each markets}}
+     <h2>{{name}}</h2>
+      <li><a href="{{contact_facebook}}" target="_blank">{{contact_facebook}}</a></li>
     {{/each}}
   </ul>
 </template>

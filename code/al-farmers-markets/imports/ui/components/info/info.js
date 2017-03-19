@@ -1,14 +1,16 @@
-import { Links } from '/imports/api/links/links.js';
+import { Markets } from '/imports/api/markets/markets.js';
+
 import { Meteor } from 'meteor/meteor';
 import './info.html';
 
 Template.info.onCreated(function () {
-  Meteor.subscribe('links.all');
+  Meteor.subscribe('markets.all');
+  
 });
 
 Template.info.helpers({
-  links() {
-    return Links.find({});
+  markets() {
+    return Markets.find({});
   },
 });
 
