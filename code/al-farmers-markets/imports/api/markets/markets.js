@@ -1,10 +1,11 @@
 // Definition of the markets collection
 
 import { Mongo } from 'meteor/mongo';
+import SimpleSchema from 'simpl-schema';
 
-export const Markets = new Mongo_Collection('markets');
+export const Markets = new Mongo.Collection('markets');
 
-Markets_schema = new SimpleSchema({
+Markets.schema = new SimpleSchema({
     'name': { type: String },
     'address_county': { type: String },
     'address_street': { type: String },
@@ -42,12 +43,12 @@ Markets_schema = new SimpleSchema({
     createdAt: {
         type: Date,
         autoValue: function () {
-            if (this_isInsert) {
+            if (this.isInsert) {
                 return new Date();
-            } else if (this_isUpsert) {
+            } else if (this.isUpsert) {
                 return { $setOnInsert: new Date() };
             } else {
-                this_unset();  // Prevent user from supplying their own value
+                this.unset();  // Prevent user from supplying their own value
             }
         }
     },
@@ -56,13 +57,12 @@ Markets_schema = new SimpleSchema({
     updatedAt: {
         type: Date,
         autoValue: function () {
-            if (this_isUpdate) {
+            if (this.isUpdate) {
                 return new Date();
             }
         },
-        denyInsert: true,
         optional: true
     }
 });
 
-Markets_attachSchema(Markets_schema);
+Markets.attachSchema(Markets.schema);
