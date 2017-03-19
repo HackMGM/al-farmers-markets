@@ -1,21 +1,11 @@
 <template name="info">
-  <h2>Alabama Farmers Markets</h2>
+  <h1>Alabama Farmers Markets</h1>
   <ul>
-    <li>
-      <form class="info-link-add">
-        <input type="text" name="title" placeholder="Title" required>
-        <input type="url" name="url" placeholder="Url" required>
-        <input type="submit" name="submit" value="Add new link">
-      </form>
-    </li>
-    {{#each links}}
-      <li><a href="{{url}}" target="_blank">{{title}}</a></li>
-    {{/each}}
-
-
      {{#each markets}}
      <h2>{{name}}</h2>
       <li><a href="{{contact_facebook}}" target="_blank">{{contact_facebook}}</a></li>
     {{/each}}
   </ul>
+  <h2>Add Market</h2>
+  {{> AddMarket}}
 </template>

@@ -5,14 +5,8 @@ import { check } from 'meteor/check';
 import { Markets } from './markets.js';
 
 Meteor.methods({
-  'markets.insert'(title, url) {
-    check(url, String);
-    check(title, String);
-
-    return Markets.insert({
-      url,
-      title,
-      createdAt: new Date(),
-    });
+  'markets.insert'(market) {
+    // TODO: Require users to log in first.
+    return Markets.insert(market);
   },
 });

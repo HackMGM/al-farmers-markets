@@ -1,7 +1,13 @@
 import { Markets } from '/imports/api/markets/markets.js';
 
 import { Meteor } from 'meteor/meteor';
+
+import '/imports/ui/components/AddMarket/AddMarket.js';
+
 import './info.html';
+
+// Make markets available in global scope for use by autoform.
+window.Markets = Markets;
 
 Template.info.onCreated(function () {
   Meteor.subscribe('markets.all');
@@ -14,21 +20,3 @@ Template.info.helpers({
   },
 });
 
-Template.info.events({
-  'submit .info-link-add'(event) {
-    event.preventDefault();
-
-    const target = event.target;
-    const title = target.title;
-    const url = target.url;
-
-    Meteor.call('links.insert', title.value, url.value, (error) => {
-      if (error) {
-        alert(error.error);
-      } else {
-        title.value = '';
-        url.value = '';
-      }
-    });
-  },
-});
