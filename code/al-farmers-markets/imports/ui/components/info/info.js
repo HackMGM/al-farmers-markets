@@ -24,7 +24,6 @@ Template.info.events({
 Template.info.helpers({
   cities() {
     let markets = Markets.find({}).fetch();
-    console.log(markets);
     let cities = [];
     for (let i = 0; i < markets.length; i++) {
       var city = markets[i].address_city;
@@ -33,7 +32,6 @@ Template.info.helpers({
         cities.push(city);
       }
     }
-    console.log(cities);
     return cities;
   },
   markets() {

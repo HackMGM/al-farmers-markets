@@ -7,12 +7,37 @@
     <option value="{{this}}">{{this}}</option>
     {{/each}}
   </select>
-  <ul>
-     {{#each markets}}
-     <h2>{{name}}</h2>
-      <li><a href="{{contact_facebook}}" target="_blank">{{contact_facebook}}</a></li>
-    {{/each}}
-  </ul>
+  {{#each markets}}
+    <h2>{{name}}</h2>
+      <a target="_blank" href="http://maps.google.com/maps?f=q&amp;hl=en&amp;q={{name}}+{{address_street}}+{{address_city}}+{{address_state}}&amp;om=1">
+      {{address_street}}<br />
+      {{address_city}}, {{address_state}} {{address_zip}}
+      </a><br />
+      {{open_hours_season_summary}}<br />
+      Covered Facility: 
+       {{#if information_covered_facility}}
+       Yes 
+       {{else}}
+       No
+       {{/if}}
+    <ul>
+      {{#if contact_contact_string}}
+      <li>Conact: {{contact_contact_string}}</li>
+      {{/if}}
+
+      {{#if contact_facebook}}
+      <li>Facebook: <a href="{{contact_facebook}}" target="_blank">{{contact_facebook}}</a></li>
+      {{/if}}
+
+      {{#if contact_website}}
+      <li>Website: <a href="{{contact_website}}" target="_blank">{{contact_website}}</a></li>
+      {{/if}}
+
+      {{#if contact_email}}
+      <li>Email: <a href="email:{{contact_email}}" target="_blank">{{contact_email}}</a></li>
+      {{/if}}
+    </ul>
+  {{/each}}
   <h2>Add Market</h2>
   {{> AddMarket}}
 </template>
