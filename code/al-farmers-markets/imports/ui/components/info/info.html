@@ -1,5 +1,12 @@
 <template name="info">
   <h1>Alabama Farmers Markets</h1>
+  <p>Filter to city</p>
+  <select class="city-filter">
+    <option value="">Select City</option>
+    {{#each cities}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
   <ul>
      {{#each markets}}
      <h2>{{name}}</h2>
